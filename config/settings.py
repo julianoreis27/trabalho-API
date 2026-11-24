@@ -20,16 +20,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
+# As configurações sensíveis podem ser definidas por variáveis de ambiente.
+# Sem nenhuma variável definida, o projeto roda em modo de desenvolvimento.
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv(
     "DJANGO_SECRET_KEY", "django-insecure-chave-apenas-para-desenvolvimento-local"
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() in ("true", "1", "sim")
 
-# "*" libera qualquer host - aceitável apenas em ambiente de desenvolvimento/apresentação
-ALLOWED_HOSTS = ["*"]
+# Lista separada por vírgula. Ex.: DJANGO_ALLOWED_HOSTS=meusite.com,www.meusite.com
+# O padrão "*" (qualquer host) é aceitável apenas em desenvolvimento/apresentação.
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
 
 # Application definition

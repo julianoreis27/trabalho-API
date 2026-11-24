@@ -83,7 +83,7 @@ class ConsultasTests(APITestCase):
     def test_buscar_por_autor_sem_diferenciar_maiusculas(self):
         resposta = self.client.get("/api/livros/buscar/", {"termo": "machado"})
         self.assertEqual(resposta.status_code, status.HTTP_200_OK)
-        self.assertEqual([l["titulo"] for l in resposta.data], ["Dom Casmurro"])
+        self.assertEqual([livro["titulo"] for livro in resposta.data], ["Dom Casmurro"])
 
     def test_buscar_por_titulo(self):
         resposta = self.client.get("/api/livros/buscar/", {"termo": "Hobbit"})
@@ -98,9 +98,9 @@ class ConsultasTests(APITestCase):
         emprestado = Livro.objects.create(**NOVO_LIVRO, disponivel=False)
         resposta = self.client.get("/api/livros/disponiveis/")
         self.assertEqual(resposta.status_code, status.HTTP_200_OK)
-        ids = [l["id"] for l in resposta.data]
+        ids = [livro["id"] for livro in resposta.data]
         self.assertNotIn(emprestado.id, ids)
-        self.assertTrue(all(l["disponivel"] for l in resposta.data))
+        self.assertTrue(all(livro["disponivel"] for livro in resposta.data))
 
     # 8) GET /api/estatisticas/
     def test_estatisticas(self):

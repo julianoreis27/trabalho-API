@@ -33,7 +33,7 @@ def buscar_livro(pk):
     try:
         return Livro.objects.get(pk=pk)
     except Livro.DoesNotExist:
-        raise NotFound(f"Livro {pk} não encontrado.")
+        raise NotFound(f"Livro {pk} não encontrado.") from None
 
 
 # ---------------------------------------------------------------------------

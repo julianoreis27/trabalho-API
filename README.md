@@ -102,6 +102,18 @@ python manage.py runserver
 
 Pronto! Acesse **http://127.0.0.1:8000/api/livros/** no navegador.
 
+### Variáveis de ambiente (opcional)
+
+Para apresentar **não é preciso definir nada**: sem variáveis, o projeto roda em
+modo de desenvolvimento. Elas existem para não deixar configurações sensíveis
+fixas no código (boa prática para quando o projeto for publicado):
+
+| Variável               | Padrão                     | Para que serve                          |
+|------------------------|----------------------------|-----------------------------------------|
+| `DJANGO_SECRET_KEY`    | chave de desenvolvimento   | Chave secreta do Django                 |
+| `DJANGO_DEBUG`         | `True`                     | `False` desliga o modo de depuração     |
+| `DJANGO_ALLOWED_HOSTS` | `*`                        | Domínios aceitos, separados por vírgula |
+
 ## Como testar
 
 ### 1. Pelo navegador (interface do Django REST Framework)
