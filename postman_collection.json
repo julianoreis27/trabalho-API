@@ -1,0 +1,242 @@
+{
+  "info": {
+    "name": "API Biblioteca (Django)",
+    "description": "Os 10 endpoints da API Biblioteca.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000/api"
+    },
+    {
+      "key": "id",
+      "value": "6"
+    }
+  ],
+  "item": [
+    {
+      "name": "CRUD",
+      "item": [
+        {
+          "name": "1) Cadastrar livro (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/livros/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"O Alquimista\",\n  \"autor\": \"Paulo Coelho\",\n  \"ano\": 1988,\n  \"genero\": \"Romance\"\n}"
+            }
+          }
+        },
+        {
+          "name": "2) Listar livros (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "3) Atualizar livro (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/livros/{{id}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "{{id}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"O Alquimista (edição especial)\",\n  \"autor\": \"Paulo Coelho\",\n  \"ano\": 1988,\n  \"genero\": \"Romance\"\n}"
+            }
+          }
+        },
+        {
+          "name": "4) Excluir livro (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/{{id}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "{{id}}",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Busca por ID",
+      "item": [
+        {
+          "name": "5) Buscar livro por ID (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/{{id}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "{{id}}",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consultas",
+      "item": [
+        {
+          "name": "6) Buscar por título ou autor (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/buscar/?termo=machado",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "buscar",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "termo",
+                  "value": "machado"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "7) Listar disponíveis (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/disponiveis/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "disponiveis",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "8) Estatísticas (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/estatisticas/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "estatisticas",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Empréstimos",
+      "item": [
+        {
+          "name": "9) Emprestar livro (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/{{id}}/emprestar/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "{{id}}",
+                "emprestar",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "10) Devolver livro (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/livros/{{id}}/devolver/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "livros",
+                "{{id}}",
+                "devolver",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
